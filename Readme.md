@@ -31,5 +31,5 @@ $ pip install -r requirements.txt
 ## Correr la app
 
 ```bash
-$ python model\wine_quality_model.py
+$ python wine_quality_model.py
 ```
