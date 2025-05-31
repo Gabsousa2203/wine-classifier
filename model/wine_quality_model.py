@@ -10,10 +10,7 @@ from keras_tuner.tuners import RandomSearch
 import joblib
 import os
 
-
-
-
-def prepara_modelo(path_csv):
+def model_prepare(path_csv):
     #* Se carga el CVS y se dividen en X e y
     df = pd.read_csv(path_csv, sep=';')
     X = df.drop('quality', axis=1)
@@ -78,15 +75,29 @@ def prepara_modelo(path_csv):
     
     return best_model, imp, scl
 
-# Entrenas cada uno:
-model_red, imp_red, scl_red     = prepara_modelo("data\winequality-red.csv")
-model_white, imp_white, scl_white = prepara_modelo("data\winequality-white.csv")
 
-#* Guardamos los modelos y los objetos de imputación y escalado
-model_red.save("models/red_wine_model.keras")       
-model_white.save("models/white_wine_model.keras")
+def train_models():
+    try:
+    
+        #* Entrena cada uno:
+        model_red, imp_red, scl_red     = model_prepare("data\winequality-red.csv")
+        model_white, imp_white, scl_white = model_prepare("data\winequality-white.csv")
 
-joblib.dump(imp_red,   "models/red_imputer.pkl")
-joblib.dump(scl_red,   "models/red_scaler.pkl")
-joblib.dump(imp_white, "models/white_imputer.pkl")
-joblib.dump(scl_white, "models/white_scaler.pkl")
+
+        #* Guardamos los modelos y los objetos de imputación y escalado
+        model_red.save("models_imputers_scalers/red_wine_model.keras")       
+        model_white.save("models_imputers_scalers/white_wine_model.keras")
+
+        joblib.dump(imp_red,   "models_imputers_scalers/red_imputer.pkl")
+        joblib.dump(scl_red,   "models_imputers_scalers/red_scaler.pkl")
+        joblib.dump(imp_white, "models_imputers_scalers/white_imputer.pkl")
+        joblib.dump(scl_white, "models_imputers_scalers/white_scaler.pkl")
+
+        return {
+            "status": "success",
+            "message": "Modelos entrenados y guardados correctamente."
+        }
+    
+    except Exception as e:
+        print(f"Error al entrenar los modelos: {e}")
+        return {"status": "Error al entrenar los modelos", "error": str(e)}
