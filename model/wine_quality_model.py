@@ -85,13 +85,13 @@ def train_models():
 
 
         #* Guardamos los modelos y los objetos de imputación y escalado
-        model_red.save("models/red_wine_model.keras")       
-        model_white.save("models/white_wine_model.keras")
+        model_red.save("models_imputers_scalers/red_wine_model.keras")       
+        model_white.save("models_imputers_scalers/white_wine_model.keras")
 
-        joblib.dump(imp_red,   "models/red_imputer.pkl")
-        joblib.dump(scl_red,   "models/red_scaler.pkl")
-        joblib.dump(imp_white, "models/white_imputer.pkl")
-        joblib.dump(scl_white, "models/white_scaler.pkl")
+        joblib.dump(imp_red,   "models_imputers_scalers/red_imputer.pkl")
+        joblib.dump(scl_red,   "models_imputers_scalers/red_scaler.pkl")
+        joblib.dump(imp_white, "models_imputers_scalers/white_imputer.pkl")
+        joblib.dump(scl_white, "models_imputers_scalers/white_scaler.pkl")
 
         return {
             "status": "success",

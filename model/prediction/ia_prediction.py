@@ -1,4 +1,4 @@
-from models import load_models
+from models_imputers_scalers import load_models
 from dto import wine_features_dto as dto
 import numpy as np
 

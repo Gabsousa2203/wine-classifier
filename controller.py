@@ -1,8 +1,8 @@
 from fastapi import FastAPI, HTTPException, Body, Query
 import numpy as np
-from model_architecture import wine_quality_model as wqm
+from model import wine_quality_model as wqm
 from dto import wine_features_dto as dto
-import ia_prediction as ia_pred
+from model.prediction import ia_prediction as ia_pred
 
 app = FastAPI()
 

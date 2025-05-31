@@ -31,5 +31,24 @@ $ pip install -r requirements.txt
 ## Correr la app
 
 ```bash
-$ python wine_quality_model.py
+$ uvicorn controller:app --reload
+```
+
+## Swagger
+
+Cuando en la terminal aparezca 
+
+```bash
+INFO:     Will watch for changes in these directories: ['D:\\Universidad\\IA\\wine-classifier']
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [14256] using WatchFiles
+INFO:     Started server process [10416]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+```
+
+Entrar al navegador de su preferencia y escribir
+
+```bash
+http://localhost:8000/docs
 ```
