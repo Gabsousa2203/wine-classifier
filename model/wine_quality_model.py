@@ -78,20 +78,22 @@ def model_prepare(path_csv):
 
 def train_models():
     try:
+        # Crear el directorio si no existe
+        os.makedirs("models_imputers_scalers", exist_ok=True)
     
         #* Entrena cada uno:
-        model_red, imp_red, scl_red     = model_prepare("data\winequality-red.csv")
-        model_white, imp_white, scl_white = model_prepare("data\winequality-white.csv")
+        model_red, imp_red, scl_red     = model_prepare(os.path.join("data", "winequality-red.csv"))
+        model_white, imp_white, scl_white = model_prepare(os.path.join("data", "winequality-white.csv"))
 
 
         #* Guardamos los modelos y los objetos de imputación y escalado
-        model_red.save("models_imputers_scalers/red_wine_model.keras")       
-        model_white.save("models_imputers_scalers/white_wine_model.keras")
+        model_red.save(os.path.join("models_imputers_scalers", "red_wine_model.keras"))       
+        model_white.save(os.path.join("models_imputers_scalers", "white_wine_model.keras"))
 
-        joblib.dump(imp_red,   "models_imputers_scalers/red_imputer.pkl")
-        joblib.dump(scl_red,   "models_imputers_scalers/red_scaler.pkl")
-        joblib.dump(imp_white, "models_imputers_scalers/white_imputer.pkl")
-        joblib.dump(scl_white, "models_imputers_scalers/white_scaler.pkl")
+        joblib.dump(imp_red,   os.path.join("models_imputers_scalers", "red_imputer.pkl"))
+        joblib.dump(scl_red,   os.path.join("models_imputers_scalers", "red_scaler.pkl"))
+        joblib.dump(imp_white, os.path.join("models_imputers_scalers", "white_imputer.pkl"))
+        joblib.dump(scl_white, os.path.join("models_imputers_scalers", "white_scaler.pkl"))
 
         return {
             "status": "success",
@@ -100,4 +102,4 @@ def train_models():
     
     except Exception as e:
         print(f"Error al entrenar los modelos: {e}")
-        return {"status": "Error al entrenar los modelos", "error": str(e)}
+        return {"status": "error", "message": str(e)}

@@ -1,10 +1,20 @@
 from fastapi import FastAPI, HTTPException, Body, Query
+from fastapi.middleware.cors import CORSMiddleware
 import numpy as np
 from model import wine_quality_model as wqm
 from dto import wine_features_dto as dto
 from model.prediction import ia_prediction as ia_pred
 
 app = FastAPI()
+
+# Configurar CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:3000"],  # Permitir peticiones desde el frontend
+    allow_credentials=True,
+    allow_methods=["*"],  # Permitir todos los métodos HTTP
+    allow_headers=["*"],  # Permitir todas las cabeceras
+)
 
 MODELS = {}
 
@@ -33,10 +43,10 @@ def predict(data: dto.WineFeaturesDict = Body(
             "density": 0.9978,
             "pH": 3.51,
             "sulphates": 0.56,
-            "alcohol": 9.4
+            "alcohol": 9.4,
+            "wine_type": "red"
         }
-    ),
-    wine_type: str = Query(..., description="Tipo de vino: 'red' o 'white'")):
+    )):
 
     try:
         FEATURES = [
@@ -44,8 +54,7 @@ def predict(data: dto.WineFeaturesDict = Body(
         "chlorides", "free_sulfur_dioxide", "total_sulfur_dioxide",
         "density", "pH", "sulphates", "alcohol"]
 
-        #* Se convierten los datos que llegan en el DTO a una lista de valores
-        if wine_type not in ['red', 'white']:
+        if data.wine_type not in ['red', 'white']:
             raise HTTPException(status_code=400, detail="Tipo de vino no válido. Debe ser 'red' o 'white'.")
     
         values = []
@@ -56,7 +65,7 @@ def predict(data: dto.WineFeaturesDict = Body(
             else:
                 values.append(val)
 
-        pred, cat = ia_pred.predict(values, wine_type)
+        pred, cat = ia_pred.predict(values, data.wine_type)
     
     except Exception as e:
         raise HTTPException(

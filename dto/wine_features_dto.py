@@ -14,3 +14,4 @@ class WineFeaturesDict(BaseModel):
     pH: Optional[float] = None
     sulphates: Optional[float] = None
     alcohol: Optional[float] = None
+    wine_type: str
