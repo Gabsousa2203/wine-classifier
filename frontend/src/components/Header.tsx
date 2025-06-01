@@ -24,7 +24,7 @@ export default function Header() {
             transition={{ delay: 0.3 }}
           >
             <a
-              href="https://github.com/yourusername/wine-classifier"
+              href="https://github.com/Gabsousa2203/wine-classifier/tree/main"
               target="_blank"
               rel="noopener noreferrer"
               className="text-white hover:text-purple-300 transition-colors"

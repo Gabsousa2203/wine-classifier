@@ -59,7 +59,7 @@ export default function About() {
           className="mt-12 text-center"
         >
           <p className="text-white/60 text-sm">
-            Desarrollado por el equipo de IA - Universidad XYZ
+            Desarrollado por Juan Mayo, Gabriel de Sousa, Cristhian Mendes y Jamal Mohamad- UCAB
           </p>
         </motion.div>
       </div>
