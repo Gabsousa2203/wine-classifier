@@ -39,7 +39,6 @@ $ uvicorn controller:app --reload
 Cuando en la terminal aparezca 
 
 ```bash
-INFO:     Will watch for changes in these directories: ['D:\\Universidad\\IA\\wine-classifier']
 INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
 INFO:     Started reloader process [14256] using WatchFiles
 INFO:     Started server process [10416]
