@@ -21,8 +21,8 @@ def model_prepare(path_csv):
         X, y, test_size=0.2, random_state=42
     )
     
-    #* Imputamos para que cuando falte un valor el modelo pueda sustituirlo por la media y escalamos los datos
-    imp = SimpleImputer(strategy='mean')
+    #* Imputamos para que cuando falte un valor el modelo pueda sustituirlo por la mediana y escalamos los datos
+    imp = SimpleImputer(strategy='median')
     scl = StandardScaler()
     X_train = scl.fit_transform(imp.fit_transform(X_train))
     X_test   = scl.transform(imp.transform(X_test))
