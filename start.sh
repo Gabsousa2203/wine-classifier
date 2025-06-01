@@ -20,12 +20,12 @@ cleanup() {
 trap cleanup SIGINT
 
 # Iniciar el backend
-source ./venv/Scripts/activate
+source \.venv\\Scripts\\activate
 uvicorn controller:app --reload &
 BACKEND_PID=$!
 
-# Esperar 2 segundos para que el backend inicie
-sleep 2
+#* Esperar 10 segundos para que el backend inicie
+sleep 10
 
 # Verificar si los modelos ya existen
 if [ ! -f "models_imputers_scalers/red_wine_model.keras" ] || [ ! -f "models_imputers_scalers/white_wine_model.keras" ]; then
