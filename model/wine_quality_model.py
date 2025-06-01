@@ -14,7 +14,7 @@ def model_prepare(path_csv):
     #* Se carga el CVS y se dividen en X e y
     df = pd.read_csv(path_csv, sep=';')
     X = df.drop('quality', axis=1)
-    y = df['quality']  # Aseguramos que y sea un array 2D
+    y = df['quality']
     
     #* Dividimos en train y test
     X_train, X_test, y_train, y_test = train_test_split(
