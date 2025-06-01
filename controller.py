@@ -25,7 +25,6 @@ def train():
     if result["status"] == "success":
         return {"detail": result["message"]}
     else:
-        # Aquí puedes lanzar un HTTPException con código 500 o similar
         from fastapi import HTTPException
         raise HTTPException(status_code=500, detail=result["message"])
 
