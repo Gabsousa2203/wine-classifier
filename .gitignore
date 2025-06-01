@@ -1,0 +1,9 @@
+
+.venv/
+
+*.pyc
+__pycache__/
+*.pkl
+*.keras
+
+my_dir/
