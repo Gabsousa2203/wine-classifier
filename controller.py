@@ -25,7 +25,6 @@ def train():
     if result["status"] == "success":
         return {"detail": result["message"]}
     else:
-        from fastapi import HTTPException
         raise HTTPException(status_code=500, detail=result["message"])
 
 @app.post("/predict")
