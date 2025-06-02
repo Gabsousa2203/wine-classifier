@@ -13,7 +13,9 @@ Este es el repositorio de la inteligencia artificial entrenada para poder califi
     </tbody>
 </table>
 
-## Creacion del Ambiente Virtual
+## Creacion del Ambiente Virtual e instalacion de dependencias
+
+### Back-end
 
 ```bash
 $ python -m venv venv
@@ -27,14 +29,56 @@ $ deactivate
 #Instalar dependencias
 $ pip install -r requirements.txt
 ```
+### Front-end
+
+Entrar en la carpeta del fronend con el comando 
+
+```bash
+cd frontend
+```
+
+Luego instalar las dependencias 
+
+```bash
+pnpm install
+```
+
 
 ## Correr la app
+
+### CMD
+
+Para activar por separado el fornt y el back 
+
+1. Activar el backend
 
 ```bash
 $ uvicorn controller:app --reload
 ```
 
-## Swagger
+2. Activar el frontend
+
+Dirigete a la dirección del front
+
+```bash
+cd frontend
+```
+
+Luego corre el siguiente comando
+
+```bash
+pnpm dev
+```
+
+### Git Bash
+
+Usar el siguiente comando
+
+```bash
+./start.sh
+```
+
+### Swagger
 
 Cuando en la terminal aparezca 
 
