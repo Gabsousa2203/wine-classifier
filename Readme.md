@@ -48,7 +48,7 @@ pnpm install
 
 ### CMD
 
-Para activar por separado el fornt y el back 
+Para activar por separado el front y el back 
 
 1. Activar el backend
 
@@ -77,6 +77,13 @@ Usar el siguiente comando
 ```bash
 ./start.sh
 ```
+
+Para acceder a la app debe entrar al navegador y escribir
+
+```bash
+http://localhost:3000
+```
+
 
 ### Swagger
 
