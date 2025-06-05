@@ -20,8 +20,10 @@ def predict(values: list, wine_type: str):
     #* Se hace la prediccion
     pred = model.predict(arr_sc)[0][0]
 
+    pred = max(0.0, min(pred, 10.0))
+
     #* Clasificación de la calidad del vino
-    if pred < 5:
+    if pred < 3:
         cat = "Malo"
     elif pred < 7:
         cat = "Regular"
